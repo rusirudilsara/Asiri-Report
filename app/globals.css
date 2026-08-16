@@ -1,0 +1,160 @@
+@import "tailwindcss";
+
+:root {
+  /* Primary theme — dark teal/gold, shared by Dashboard, Doctor Performance, Volume Trends */
+  --bg: #0e1a1c;
+  --surface: #132528;
+  --surface2: #172c2f;
+  --border: #22393c;
+  --border-soft: #1c3134;
+  --teal: #1e8c82;
+  --teal-light: #4fbdae;
+  --gold: #d98e4a;
+  --good: #4fa97c;
+  --warn: #d9a441;
+  --bad: #d9634a;
+  --text: #eaf3f1;
+  --text-dim: #9fb6b3;
+  --text-faint: #6c8683;
+  --radius: 14px;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface2: var(--surface2);
+  --color-border: var(--border);
+  --color-teal: var(--teal);
+  --color-teal-light: var(--teal-light);
+  --color-gold: var(--gold);
+  --color-good: var(--good);
+  --color-warn: var(--warn);
+  --color-bad: var(--bad);
+  --color-text: var(--text);
+  --color-text-dim: var(--text-dim);
+  --color-text-faint: var(--text-faint);
+  --font-sans: var(--font-inter);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  background: var(--bg);
+  color: var(--text);
+}
+
+body {
+  font-family: var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+.font-display {
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+.num {
+  font-variant-numeric: tabular-nums;
+  font-family: "Courier New", monospace;
+}
+
+::-webkit-scrollbar {
+  height: 8px;
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--surface);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 4px;
+}
+
+@layer components {
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border-soft);
+    border-radius: var(--radius);
+  }
+  .stat-card {
+    @apply p-4;
+    background: var(--surface);
+    border: 1px solid var(--border-soft);
+    border-radius: var(--radius);
+  }
+  .stat-label {
+    @apply text-[11px] uppercase tracking-wide;
+    color: var(--text-faint);
+  }
+  .stat-value {
+    @apply text-2xl font-semibold mt-1.5;
+    font-family: Georgia, "Times New Roman", serif;
+  }
+  .stat-sub {
+    @apply text-[11.5px] mt-1;
+    color: var(--text-dim);
+  }
+  .chip {
+    @apply px-3 py-1.5 rounded-full text-[12.5px] font-semibold cursor-pointer select-none whitespace-nowrap transition-colors;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    color: var(--text-dim);
+  }
+  .chip:hover {
+    border-color: var(--teal-light);
+    color: var(--text);
+  }
+  .chip.active {
+    background: var(--teal);
+    border-color: var(--teal);
+    color: #06181c;
+  }
+  .pill {
+    @apply inline-block text-[11px] font-semibold px-2 py-0.5 rounded-full;
+  }
+  .pill-good {
+    background: rgba(79, 169, 124, 0.14);
+    color: var(--good);
+  }
+  .pill-warn {
+    background: rgba(217, 164, 65, 0.16);
+    color: var(--warn);
+  }
+  .pill-bad {
+    background: rgba(217, 99, 74, 0.16);
+    color: var(--bad);
+  }
+  .input-field {
+    @apply rounded-lg px-3 py-2 text-[13px] outline-none;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    color: var(--text);
+  }
+  .input-field:focus {
+    border-color: var(--teal);
+  }
+  .table-shell {
+    @apply w-full border-collapse text-[12.5px];
+  }
+  .table-shell thead th {
+    @apply text-right px-2.5 py-2 font-semibold uppercase tracking-wide text-[10.5px] whitespace-nowrap;
+    color: var(--text-faint);
+    border-bottom: 1px solid var(--border-soft);
+  }
+  .table-shell thead th:first-child {
+    @apply text-left;
+  }
+  .table-shell tbody td {
+    @apply text-right px-2.5 py-2 whitespace-nowrap;
+    border-bottom: 1px solid var(--border-soft);
+    color: var(--text);
+  }
+  .table-shell tbody td:first-child {
+    @apply text-left;
+  }
+  .table-shell tr.total-row td {
+    font-weight: 700;
+    background: var(--surface2);
+  }
+}
